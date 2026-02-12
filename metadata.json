@@ -1,0 +1,7 @@
+{
+  "name": "RupeeSplit - Smart Bill Divider",
+  "description": "A sophisticated Splitwise clone for managing group expenses in INR, featuring AI-powered expense parsing and smart debt simplification.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
