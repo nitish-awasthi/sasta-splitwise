@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { Friend, Expense, ExpenseCategory } from '../types';
-import { parseExpenseWithAI } from '../services/geminiService';
+import { Friend, Expense, ExpenseCategory } from '../types.ts';
+import { parseExpenseWithAI } from '../services/geminiService.ts';
 
 interface ExpenseFormProps {
   onClose: () => void;
@@ -30,14 +30,12 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ onClose, onSubmit, friends, m
         setCategory(result.category as ExpenseCategory);
       }
       
-      // Try to match mentioned names with existing friends
       if (result.mentionedNames && result.mentionedNames.length > 0) {
         const matchedIds = friends
           .filter(f => result.mentionedNames.some((name: string) => f.name.toLowerCase().includes(name.toLowerCase())))
           .map(f => f.id);
         
         if (matchedIds.length > 0) {
-          // If names matched, only split with those names + self
           setSelectedFriends([...new Set([meId, ...matchedIds])]);
         }
       }
@@ -77,7 +75,6 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ onClose, onSubmit, friends, m
         </div>
 
         <div className="overflow-y-auto p-6 space-y-6">
-          {/* AI Helper Section */}
           <div className="p-4 bg-teal-50 rounded-xl border border-teal-100">
             <label className="block text-sm font-semibold text-teal-800 mb-2">Smart Entry (AI)</label>
             <div className="flex gap-2">

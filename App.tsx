@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { Friend, Expense, ExpenseCategory } from './types';
-import Dashboard from './components/Dashboard';
-import ExpenseForm from './components/ExpenseForm';
-import FriendsList from './components/FriendsList';
-import ExpenseList from './components/ExpenseList';
-import { calculateBalances } from './utils';
+import { Friend, Expense, ExpenseCategory } from './types.ts';
+import Dashboard from './components/Dashboard.tsx';
+import ExpenseForm from './components/ExpenseForm.tsx';
+import FriendsList from './components/FriendsList.tsx';
+import ExpenseList from './components/ExpenseList.tsx';
+import { calculateBalances } from './utils.ts';
 
 const ME_ID = 'user-0';
 
@@ -29,7 +29,6 @@ const INITIAL_EXPENSES: Expense[] = [
 ];
 
 const App: React.FC = () => {
-  // Load initial data from localStorage or use defaults
   const [friends, setFriends] = useState<Friend[]>(() => {
     const saved = localStorage.getItem('rupeeSplit_friends');
     return saved ? JSON.parse(saved) : INITIAL_FRIENDS;
@@ -43,7 +42,6 @@ const App: React.FC = () => {
   const [isAddingExpense, setIsAddingExpense] = useState(false);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'expenses' | 'friends'>('dashboard');
 
-  // Persistence effects
   useEffect(() => {
     localStorage.setItem('rupeeSplit_friends', JSON.stringify(friends));
   }, [friends]);
@@ -72,7 +70,6 @@ const App: React.FC = () => {
   };
 
   const handleDeleteFriend = (id: string) => {
-    // We check if there are pending balances before deletion
     const balance = balances[id] || 0;
     if (Math.abs(balance) > 0.1) {
       if (!window.confirm(`This friend has a pending balance of ₹${Math.abs(balance).toFixed(2)}. Are you sure you want to delete them?`)) {
@@ -93,7 +90,7 @@ const App: React.FC = () => {
           <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
             ₹
           </div>
-          <h1 className="text-xl font-bold text-slate-800">RupeeSplit</h1>
+          <h1 className="text-xl font-bold text-slate-800">sasta splitwise</h1>
         </div>
         
         <nav className="flex md:flex-col justify-around md:justify-start md:mt-4">

@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { Expense, Friend, ExpenseCategory } from '../types';
-import { formatCurrency } from '../utils';
+import { Expense, Friend, ExpenseCategory } from '../types.ts';
+import { formatCurrency } from '../utils.ts';
 
 interface ExpenseListProps {
   expenses: Expense[];

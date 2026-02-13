@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { Friend, Expense } from '../types';
-import { formatCurrency } from '../utils';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { Friend, Expense } from '../types.ts';
+import { formatCurrency } from '../utils.ts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 
 interface DashboardProps {
   totalOwe: number;
@@ -27,7 +27,6 @@ const Dashboard: React.FC<DashboardProps> = ({ totalOwe, totalOwed, balances, fr
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {/* Top Cards */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
         <p className="text-slate-500 text-sm font-medium uppercase tracking-wider mb-2">Total Balance</p>
         <p className={`text-3xl font-bold ${netBalance >= 0 ? 'text-teal-600' : 'text-rose-500'}`}>
@@ -43,7 +42,6 @@ const Dashboard: React.FC<DashboardProps> = ({ totalOwe, totalOwed, balances, fr
         <p className="text-3xl font-bold text-teal-600">{formatCurrency(totalOwed)}</p>
       </div>
 
-      {/* Main Stats */}
       <div className="md:col-span-2 space-y-6">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
           <h3 className="text-lg font-bold mb-6 text-slate-800">Spending by Category</h3>
@@ -81,7 +79,6 @@ const Dashboard: React.FC<DashboardProps> = ({ totalOwe, totalOwed, balances, fr
         </div>
       </div>
 
-      {/* Sidebar Stats */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
         <h3 className="text-lg font-bold mb-4 text-slate-800">Recent Activity</h3>
         <div className="space-y-4">

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { Friend } from '../types';
-import { formatCurrency } from '../utils';
+import { Friend } from '../types.ts';
+import { formatCurrency } from '../utils.ts';
 
 interface FriendsListProps {
   friends: Friend[];
@@ -83,8 +83,6 @@ const FriendsList: React.FC<FriendsListProps> = ({ friends, balances, onAddFrien
                   </svg>
                 </button>
               </div>
-
-              {/* Decorative accent */}
               <div className={`absolute left-0 top-0 bottom-0 w-1 transition-all ${balance === 0 ? 'bg-slate-100' : balance > 0 ? 'bg-rose-100 group-hover:bg-rose-400' : 'bg-teal-100 group-hover:bg-teal-400'}`}></div>
             </div>
           );
